@@ -4,14 +4,14 @@ import { create } from "zustand";
 interface DimensionState {
   width: number;
   height: number;
-  setDimensions: (width: number, height: number) => void;
+  setDimension: (width: number, height: number) => void;
 }
 
 // 스토어 생성
 const useDimensionStore = create<DimensionState>((set) => ({
-  width: 500,
-  height: 400,
-  setDimensions: (width, height) => set({ width, height }),
+  width: 600,
+  height: 600,
+  setDimension: (width, height) => set({ width, height }),
 }));
 
 export default useDimensionStore;

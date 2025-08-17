@@ -7,7 +7,7 @@ import NivoLine from "./charts/LineChart";
 import NivoPie from "./charts/PieChart";
 import NivoRadar from "./charts/RadarChart";
 import NivoSankey from "./charts/SankeyChart";
-import NivoScatterPlot from "./charts/ScatterChart";
+import NivoScatter from "./charts/ScatterChart";
 import NivoStream from "./charts/StreamChart";
 import NivoTreeMap from "./charts/TreemapChart";
 
@@ -22,15 +22,16 @@ const Sidebar = ({
 }) => (
   <nav className="w-40 p-4 border-r border-slate-700">
     <h2 className="text-xl font-semibold mb-4">Chart Types</h2>
+    <br />
     <ul className="text-sm">
       {chartTypes.map((menu) => (
         <li key={menu} className="mb-2 text-black">
           <button
             onClick={() => setSelectedMenu(menu)}
-            className={`w-full text-left hover:bg-blue-200 hover:text-black cursor-pointer rounded ${
+            className={`w-full text-left cursor-pointer rounded ${
               selectedMenu === menu
-                ? "bg-blue-200 text-blue-700 font-bold"
-                : "text-gray-500"
+                ? "bg-blue-300 text-blue-600 font-bold"
+                : "text-gray-400 border border-gray-600 hover:border-gray-300 hover:text-blue-600"
             }`}
           >
             {menu}
@@ -77,7 +78,7 @@ const App = () => {
     Pie: <NivoPie />,
     Radar: <NivoRadar />,
     Sankey: <NivoSankey />,
-    Scatter: <NivoScatterPlot />,
+    Scatter: <NivoScatter />,
     Stream: <NivoStream />,
     TreeMap: <NivoTreeMap />,
   };
@@ -85,18 +86,19 @@ const App = () => {
   return (
     <div className="bg-slate-900 text-white min-h-screen font-sans">
       <header className="p-6 border-b border-slate-700">
-        <h1 className="text-3xl font-bold">Nivo Example Dashboard</h1>
+        <h1 className="text-3xl font-bold">Nivo Sample Dashboard</h1>
         <p className="text-slate-400 mt-1">
           Using TypeScript, React, and TailwindCSS
         </p>
       </header>
-      <div className="flex">
+      <br />
+      <div className="flex gap-4">
         <Sidebar
           chartTypes={chartTypes}
           selectedMenu={selectedChart}
           setSelectedMenu={setSelectedChart}
         />
-        <main className="flex-1 p-8 overflow-auto w-128">
+        <main className="flex-1 p-8 overflow-auto w-160 h-160">
           <ChartCard title={`${selectedChart} Chart`}>
             {chartComponents[selectedChart]}
           </ChartCard>
